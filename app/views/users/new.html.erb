@@ -1,0 +1,16 @@
+  <main class="p-12 mx-auto text-gray-800 max-w-7xl">
+    <%= form_with model: @user do |f| %>
+        <div class="md:flex md:w-full md:justify-between md:items-center mb-6">
+            <%= f.text_field :first_name, class: "min-w-1/2" %>
+            <%= f.label :first_name, class: "mb-1 md:mb-0 pr-4" %>
+            <%= f.text_field :last_name, class: "min-w-1/2" %>
+            <%= f.label :last_name, class: "mb-1 md:mb-0 pr-4" %>
+            <%= f.email_field :email, class: "min-w-1/2" %>
+            <%= f.label :email, class: "mb-1 md:mb-0 pr-4" %>
+            <%= f.password_field :password, class: "min-w-1/2" %>
+            <%= f.label :password, class: "mb-1 md:mb-0 pr-4" %>
+
+            <%= f.submit "Signup", class: "" %>
+        </div>
+    <% end %>
+  </main>
