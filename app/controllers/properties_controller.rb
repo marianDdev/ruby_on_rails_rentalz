@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
 
     def index
-        @properties = Property.all
+        @properties = Property.limit(10)
     end
 end
