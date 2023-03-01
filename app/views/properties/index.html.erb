@@ -1,0 +1,18 @@
+<main>
+   
+        <table>
+            <thead>
+                <td>Type</td>
+                <td>City</td>
+            <thead>
+            <tbody>
+                <%= @properties.each do |p| %>
+                    <tr>
+                        <td><%= p.category %></td>
+                        <td><%= p.city %></td>
+                    <tr>
+                <% end %>
+            </tbody>
+        </table>
+  
+</main>

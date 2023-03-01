@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_28_095934) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_01_210523) do
+  create_table "properties", force: :cascade do |t|
+    t.string "category"
+    t.string "continent"
+    t.string "country"
+    t.string "city"
+    t.string "neighbourhood"
+    t.string "name"
+    t.text "description"
+    t.text "facilities"
+    t.float "rating"
+    t.integer "reviews"
+    t.integer "guests"
+    t.integer "bedrooms"
+    t.integer "beds"
+    t.integer "baths"
+    t.integer "price"
+    t.string "currency"
+    t.boolean "is_available"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
