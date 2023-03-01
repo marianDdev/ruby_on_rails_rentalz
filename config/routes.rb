@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  resources :properties
+  root 'properties#index'
+  
   get '/signup', to: 'users#new'
   resources :users
 
