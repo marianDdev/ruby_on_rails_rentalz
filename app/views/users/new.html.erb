@@ -2,6 +2,10 @@
   <div class="container">
     
     <%= form_with model: @user do |f| %>
+
+      <%= f.label "Your role" %>
+      <%= f.select :role, ['owner', 'guest'] %>
+
       <%= f.text_field :first_name, placeholder: "First name" %>
 
       <%= f.text_field :last_name, placeholder: "Last name" %>
