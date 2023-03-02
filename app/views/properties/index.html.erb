@@ -2,6 +2,7 @@
                   <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
 
                 <% @properties.each do |p| %>
+                 <%= link_to(p) do%>
                    <div class="max-w-sm rounded overflow-hidden shadow-lg">
                         <%= image_tag 'apartment.jpeg', class: 'w-full' %>
                         <div class="px-6 py-4">
@@ -16,5 +17,6 @@
                             <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><%= p.category %></span>
                         </div>
                     </div>
+                     <% end %>
                 <% end %>
                 </div>
