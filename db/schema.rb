@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_01_210523) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_02_181705) do
   create_table "properties", force: :cascade do |t|
     t.string "category"
     t.string "continent"
@@ -31,6 +31,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_210523) do
     t.boolean "is_available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_properties_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,6 +42,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_210523) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "role"
   end
 
+  add_foreign_key "properties", "users"
 end

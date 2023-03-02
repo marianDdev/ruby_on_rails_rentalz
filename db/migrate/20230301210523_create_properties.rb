@@ -2,6 +2,8 @@ class CreateProperties < ActiveRecord::Migration[7.0]
   def change
     create_table :properties do |t|
 
+      add_reference :properties, :user
+
       t.string :category
       t.string :continent
       t.string :country
@@ -10,8 +12,8 @@ class CreateProperties < ActiveRecord::Migration[7.0]
       t.string :name
       t.text :description
       t.text :facilities
-      t.float :rating
-      t.integer :reviews
+      t.float :rating, null: true
+      t.integer :reviews, null: true 
       t.integer :guests
       t.integer :bedrooms
       t.integer :beds
