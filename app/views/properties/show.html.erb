@@ -1,0 +1,47 @@
+<a href="#" class="block rounded-lg p-4 shadow-sm shadow-indigo-100">
+  
+  <%= image_tag 'full_pic_interior_apartment.avif', class: 'h-56 w-full rounded-md object-cover' %>
+
+  <div class="mt-2">
+    <dl>
+      <div>
+        <dt class="sr-only">Price</dt>
+
+        <dd class="text-sm text-gray-500">$<%= @property.price %>,00</dd>
+      </div>
+
+      <div>
+        <dt class="sr-only">Address</dt>
+
+        <dd class="font-medium"><%= @property.city %>, <%= @property.country %></dd>
+      </div>
+    </dl>
+
+    <div class="mt-6 flex items-center gap-8 text-xs">
+      <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+
+        <div class="mt-1.5 sm:mt-0">
+          <p class="text-gray-500">Parking</p>
+
+          <p class="font-medium">2 spaces</p>
+        </div>
+      </div>
+
+      <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+
+        <div class="mt-1.5 sm:mt-0">
+          <p class="text-gray-500"><%= @property.baths %> Bathrooms</p>
+        </div>
+      </div>
+
+      <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+
+        <div class="mt-1.5 sm:mt-0">
+          <p class="text-gray-500">Bedroom</p>
+
+          <p class="font-medium"><%= @property.bedrooms %> rooms</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>
