@@ -1,4 +1,4 @@
-<a href="#" class="block rounded-lg p-4 shadow-sm shadow-indigo-100">
+<div class="block rounded-lg p-4 shadow-sm shadow-indigo-100">
   
   <%= image_tag 'full_pic_interior_apartment.avif', class: 'h-56 w-full rounded-md object-cover' %>
 
@@ -42,7 +42,15 @@
           <p class="font-medium"><%= @property.bedrooms %> rooms</p>
         </div>
       </div>
-      <%= link_to "Edit", edit_property_path(@property.id) %>
+      <% if current_user && current_user.owner? %> 
+          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><%= link_to "Edit", edit_property_path(@property.id) %></span>
+                            
+                                
+          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+		          <%= button_to "Delete", property_path(@property), method: :delete %>
+          </span>
+		  <% end %>
+
     </div>
   </div>
-</a>
+</div>
