@@ -27,6 +27,19 @@ class PropertiesController < ApplicationController
         end
     end
 
+    def edit
+        @property = Property.find(params[:id])
+    end
+    
+    def update
+        @property = Property.find(params[:id])
+        if @property.update(property_params)
+            redirect_to @property
+        else
+            render 'edit'
+        end
+    end
+
     private
         def property_params
             params.require(:property).permit(
