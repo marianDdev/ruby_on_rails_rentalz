@@ -1,9 +1,13 @@
 class PropertiesController < ApplicationController
 
-    before_action :require_owner, only: [:new, :create]
+    before_action :require_owner, only: [:new, :create, :my_properties]
 
     def index
         @properties = Property.all.order(created_at: :desc)
+    end
+
+    def my_properties
+        @properties = current_user.properties.order(created_at: :desc)
     end
 
     def show
@@ -15,9 +19,6 @@ class PropertiesController < ApplicationController
     end
 
     def create
-        property_params[:user_id] = current_user.id
-        property_params[:is_available] = true
-
         @property = Property.new(property_params)
 
         if @property.save
@@ -68,7 +69,7 @@ class PropertiesController < ApplicationController
                 :price,
                 :currency,
                 :is_available,
-            )
+            ).merge(user: current_user, is_available: true)
         end   
 
 end
