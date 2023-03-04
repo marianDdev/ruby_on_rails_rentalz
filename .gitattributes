@@ -5,5 +5,24 @@ db/schema.rb linguist-generated
 
 # Mark any vendored files as having been vendored.
 vendor/* linguist-vendored
-*.css linguist-detectable=false
 *.html linguist-detectable=false
+
+app/views/layouts/* linguist-generated
+*.html linguist-detectable=false
+*.erb linguist-detectable=false
+
+app/views/pages/* linguist-generated
+*.html linguist-detectable=false
+*.erb linguist-detectable=false
+
+app/views/properties/* linguist-generated
+*.html linguist-detectable=false
+*.erb linguist-detectable=false
+
+app/views/sessions/* linguist-generated
+*.html linguist-detectable=false
+*.erb linguist-detectable=false
+
+app/views/users/* linguist-generated
+*.html linguist-detectable=false
+*.erb linguist-detectable=false
