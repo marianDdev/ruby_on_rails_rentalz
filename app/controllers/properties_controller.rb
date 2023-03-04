@@ -1,9 +1,13 @@
 class PropertiesController < ApplicationController
 
-    before_action :require_owner, only: [:new, :create]
+    before_action :require_owner, only: [:new, :create, :my_properties]
 
     def index
         @properties = Property.all.order(created_at: :desc)
+    end
+
+    def my_properties
+        @properties = current_user.properties.order(created_at: :desc)
     end
 
     def show

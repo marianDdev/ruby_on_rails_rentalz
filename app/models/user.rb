@@ -12,4 +12,6 @@ class User < ApplicationRecord
         self.role == 'guest'
     end
 
+    
+
 end

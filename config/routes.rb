@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   resources :properties
+  get 'my_properties', to: 'properties#my_properties'
   root 'properties#index'
   
   get '/signup', to: 'users#new'
