@@ -29,6 +29,9 @@
                       <li>
                         <%= link_to "My properties", my_properties_path, class: "block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
                       </li>
+                      <li>
+                        <%= link_to "Add property", new_property_path, class: "block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
+                      </li>
                     <% end %>  
                       <li>
                         <%= button_to "Logout", logout_path, method: :delete,  class:"block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>

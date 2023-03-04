@@ -19,9 +19,6 @@ class PropertiesController < ApplicationController
     end
 
     def create
-        property_params[:user_id] = current_user.id
-        property_params[:is_available] = true
-
         @property = Property.new(property_params)
 
         if @property.save
@@ -72,7 +69,7 @@ class PropertiesController < ApplicationController
                 :price,
                 :currency,
                 :is_available,
-            )
+            ).merge(user: current_user, is_available: true)
         end   
 
 end
