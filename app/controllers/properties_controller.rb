@@ -20,6 +20,7 @@ class PropertiesController < ApplicationController
 
     def create
         @property = Property.new(property_params)
+        @property.images.attach(params[:property][:images])
 
         if @property.save
             redirect_to '/'
@@ -69,6 +70,7 @@ class PropertiesController < ApplicationController
                 :price,
                 :currency,
                 :is_available,
+                :images
             ).merge(user: current_user, is_available: true)
         end   
 
