@@ -5,7 +5,7 @@
                  <%= link_to(p) do%>
                    <div class="max-w-sm rounded overflow-hidden shadow-lg">
                         <% if p.images.attached? %>
-                            <%= image_tag p.images.first.variant(resize_to_fit: [500, 367]), class: 'w-full' %>
+                            <%= image_tag p.images.first, class: 'w-full' %>
                         <% else %>
                             <%= image_tag 'apartment.jpeg', class: 'w-full' %>
                         <% end %>    
