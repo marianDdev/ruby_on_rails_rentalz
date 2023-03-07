@@ -30,7 +30,10 @@
                       <li>
                         <%= link_to "Add property", new_property_path, class: "block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
                       </li>
-                    <% end %>  
+                    <% end %> 
+                    <li>
+                        <%= link_to "My bookings", bookings_path, class:"block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
+                      </li>
                       <li>
                         <%= button_to "Logout", logout_path, method: :delete,  class:"block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
                       </li>

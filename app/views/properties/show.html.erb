@@ -53,14 +53,13 @@
   </div>
 </div>
 
-<% if current_user.guest? %>
 <div class="block rounded-lg p-4 shadow-sm shadow-indigo-100">
   <div class="mt-2">
     <dl>
       <div> 
-        <dd class="font-medium"><%= link_to "Reserve", new_booking_path(id: @property.id) %></dd>
+        <dd class="font-medium"><%= link_to_unless(current_user.owner?, "Reserve", new_booking_path(id: @property.id)) %></dd>
+        <dd class="font-medium"><%= link_to_if(current_user.owner?, "Show booking requests", bookings_path(property_id: @property.id)) %></dd>
       </div>
     </dl>
   </div>
 </div>
-<% end %>

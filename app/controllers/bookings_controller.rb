@@ -4,9 +4,10 @@ class BookingsController < ApplicationController
 
     def index
         if current_user.owner?
-            @bookings = current_user.owner_bookings
+            @bookings = current_user.owner_bookings.where(property_id_condition)
+            
         elsif current_user.guest?
-            @bookings = current_user.guest_bookings
+            @bookings = current_user.guest_bookings.where(property_id_condition)
         end
     end
 
@@ -18,8 +19,8 @@ class BookingsController < ApplicationController
         @booking = Booking.new
         q = request.query_parameters
         @property = Property.find(q[:id])
-        @propertyId = @property[:id]
-        @ownerId = @property.user[:id]
+        @property_id = @property[:id]
+        @owner_id = @property.user[:id]
         @guest = current_user
     end
 
@@ -31,6 +32,17 @@ class BookingsController < ApplicationController
         else
             render 'new'
         end    
+    end
+
+    def edit
+        @booking = Booking.find(params[:id])
+    end
+
+      def update
+        @booking = Booking.find(params[:id])
+        @booking.update(booking_params)
+
+        redirect_to @booking
     end
 
     def approve
@@ -49,6 +61,11 @@ class BookingsController < ApplicationController
         def booking_params
             params.require(:booking)
             .permit(:guest_id, :owner_id, :property_id, :start_at, :end_at, :guests_count, :status)
+        end
+
+    private
+        def property_id_condition
+            ['property_id = ?', params[:property_id]] unless params[:property_id].blank?
         end
 
 end
