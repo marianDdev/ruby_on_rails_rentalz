@@ -63,4 +63,18 @@
     </dl>
   </div>
 </div>
+
+<% end %>
+
+<% if current_user.owner? %>
+<div class="block rounded-lg p-4 shadow-sm shadow-indigo-100">
+  <div class="mt-2">
+    <dl>
+      <div>      
+        <dd class="font-medium"><%= link_to "Show booking requests", bookings_path(property_id: @property.id) %></dd>
+      </div>
+    </dl>
+  </div>
+</div>
+
 <% end %>
