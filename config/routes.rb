@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   resources :properties
-  get 'my_properties', to: 'properties#my_properties'
+  get '/my_properties', to: 'properties#my_properties'
   root 'properties#index'
   
   get '/signup', to: 'users#new'
@@ -14,5 +14,9 @@ Rails.application.routes.draw do
   get '/about', to: 'pages#about'
   get '/contact', to: 'pages#contact'
   get '/dashboard', to: 'pages#dashboard'
+
+  resources :bookings
+  patch '/bookings/:id/approve', to: 'bookings#approve', as: 'approve'
+  patch '/bookings/:id/decline', to: 'bookings#decline', as: 'decline'
 
 end
