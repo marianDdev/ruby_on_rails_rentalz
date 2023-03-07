@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   get '/contact', to: 'pages#contact'
   get '/dashboard', to: 'pages#dashboard'
 
+  resources :bookings
+
 end
