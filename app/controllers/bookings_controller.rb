@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
 
-    before_action :require_guest, only: [:new, :create, :edit, :update, :my_bookings]
+    before_action :require_guest, only: [:new, :create, :edit, :update]
 
     def index
         if current_user.owner?
@@ -31,6 +31,18 @@ class BookingsController < ApplicationController
         else
             render 'new'
         end    
+    end
+
+    def approve
+        @booking = Booking.find(params[:id])
+        @booking.update(status: "approved") 
+        redirect_to @booking
+    end
+
+    def decline
+        @booking = Booking.find(params[:id])
+        @booking.update(status: "declined") 
+        redirect_to @booking
     end
 
     private
