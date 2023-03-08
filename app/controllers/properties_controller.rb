@@ -5,6 +5,7 @@ class PropertiesController < ApplicationController
     def index
         @q = Property.ransack(params[:q])
         @properties = @q.result(distinct: true)
+        @countries = CS.countries
     end
 
     def my_properties
