@@ -16,8 +16,7 @@ class PropertiesController < ApplicationController
     end
 
     def new
-        @property = Property.new property_params
-    end
+        @property = Property.new
 
     def create
         @property = Property.new(property_params)
