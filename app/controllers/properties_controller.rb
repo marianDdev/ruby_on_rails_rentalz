@@ -3,7 +3,8 @@ class PropertiesController < ApplicationController
     before_action :require_owner, only: [:new, :create, :my_properties]
 
     def index
-        @properties = Property.all.order(created_at: :desc)
+        @q = Property.ransack(params[:q])
+        @properties = @q.result(distinct: true)
     end
 
     def my_properties

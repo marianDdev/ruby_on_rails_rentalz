@@ -47,6 +47,10 @@ gem "bootsnap", require: false
 
 gem 'faker'
 
+gem 'ransack'
+
+gem 'city-state'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
