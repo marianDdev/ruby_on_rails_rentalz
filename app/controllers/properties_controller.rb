@@ -51,7 +51,7 @@ class PropertiesController < ApplicationController
 
     private
         def property_params
-            params.fetch(:property, {}).permit(
+            params.require(:property).permit(
                 :user_id,
                 :category,
                 :continent,
