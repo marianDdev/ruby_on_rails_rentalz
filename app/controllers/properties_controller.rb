@@ -3,7 +3,8 @@ class PropertiesController < ApplicationController
     before_action :require_owner, only: [:new, :create, :my_properties]
 
     def index
-        @properties = Property.all.order(created_at: :desc)
+        @q = Property.ransack(params[:q])
+        @properties = @q.result(distinct: true)
     end
 
     def my_properties
@@ -15,7 +16,7 @@ class PropertiesController < ApplicationController
     end
 
     def new
-        @property = Property.new
+        @property = Property.new property_params
     end
 
     def create
@@ -51,7 +52,7 @@ class PropertiesController < ApplicationController
 
     private
         def property_params
-            params.require(:property).permit(
+            params.fetch(:property, {}).permit(
                 :user_id,
                 :category,
                 :continent,

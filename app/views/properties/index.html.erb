@@ -1,5 +1,9 @@
+<%= render('layouts/searchbar') %>
 
                   <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+                  <%= sort_link(@q, :name, "Sort by name") %>
+<%= sort_link(@q, :country, "Sort by country") %>
+<%= sort_link(@q, :city, "Sort by city") %>
 
                 <% @properties.each do |p| %>
                  <%= link_to(p) do%>
