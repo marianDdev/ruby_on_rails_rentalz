@@ -6,22 +6,47 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-propertyTypes = ['house', 'apartment', 'guesthouse', 'hote']
-continents = ['North America', 'South America', 'Europe', 'Asia', 'Africa', 'Australia']
+property_types = ['house', 'apartment', 'guesthouse', 'hotel']
 
-User.create(
-    first_name: 'John',
-    last_name: 'Doe',
-    email: 'doe@email.com',
-    password: 'aaaaaaaa',
-)
+['owner', 'guest'].each do |role|
+    @email = role + '@email.com'
+    User.create(
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        role: role,
+        email: @email,
+        password: 'aaaaaaaa'
+    )
+end
 
-(1..100).each do |id|
-    Property.create(
-        category: propertyTypes.sample,
-        continent: continents.sample,
-        country: Faker::Address.country,
-        city: Faker::Address.city,
+CS.countries.each do |c|
+    @country = Country.create(
+        code: c[0],
+        name: c[1]
+    )
+end
+
+@countries = Country.all
+
+@countries.each do |country|
+    @cities = CS.get country.code
+    @cities.each do |city|
+        City.create(
+            country_id: country.id,
+            country_code: country.code,
+            name: city[1]
+        )
+    end
+end
+
+@users = User.all
+
+@countries.each do |country|
+    country.cities.limit(3).each do |city|
+        Property.create(
+        category: property_types.sample,
+        country: country.name,
+        city: city.name,
         neighbourhood: Faker::Address.full_address,
         name: Faker::Name.name,
         description: Faker::Markdown.emphasis,
@@ -35,6 +60,8 @@ User.create(
         price: Faker::Number.number(digits: 4),
         currency: Faker::Currency.code,
         is_available: [true, false].sample,
-        user_id: 1,
+        user_id: @users.sample.id,
     )
-end   
+    end
+end
+

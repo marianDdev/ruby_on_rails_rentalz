@@ -1,11 +1,11 @@
 class PropertiesController < ApplicationController
 
     before_action :require_owner, only: [:new, :create, :my_properties]
+    before_action :find_my
 
     def index
         @q = Property.ransack(params[:q])
         @properties = @q.result(distinct: true)
-        @countries = CS.countries
     end
 
     def my_properties
@@ -18,6 +18,8 @@ class PropertiesController < ApplicationController
 
     def new
         @property = Property.new
+        @countries = Country.all
+        @cities = @country&.cities || []
     end
 
     def create
@@ -56,7 +58,6 @@ class PropertiesController < ApplicationController
             params.require(:property).permit(
                 :user_id,
                 :category,
-                :continent,
                 :country,
                 :city,
                 :neighbourhood,
@@ -75,5 +76,11 @@ class PropertiesController < ApplicationController
                 :images
             ).merge(user: current_user, is_available: true)
         end   
+    
+    private    
+        def find_my
+            @country = Country.find_by(id: params[:country].presence)
+        end
+        
 
 end

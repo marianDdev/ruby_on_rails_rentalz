@@ -2,10 +2,8 @@ class CreateProperties < ActiveRecord::Migration[7.0]
   def change
     create_table :properties do |t|
 
-      add_reference :properties, :user
-
+      t.belongs_to :user, foreign_key: true
       t.string :category
-      t.string :continent
       t.string :country
       t.string :city
       t.string :neighbourhood
