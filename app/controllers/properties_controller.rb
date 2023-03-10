@@ -1,7 +1,6 @@
 class PropertiesController < ApplicationController
 
     before_action :require_owner, only: [:new, :create, :my_properties]
-    before_action :find_my
 
     def index
         @q = Property.ransack(params[:q])
@@ -18,8 +17,8 @@ class PropertiesController < ApplicationController
 
     def new
         @property = Property.new
-        @countries = Country.all
-        @cities = @country&.cities || []
+        @countries = Country.pluck(:name)
+        @cities = City.pluck(:name)
     end
 
     def create
@@ -77,10 +76,5 @@ class PropertiesController < ApplicationController
             ).merge(user: current_user, is_available: true)
         end   
     
-    private    
-        def find_my
-            @country = Country.find_by(id: params[:country].presence)
-        end
-        
-
+    
 end
