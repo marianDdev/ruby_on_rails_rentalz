@@ -5,6 +5,6 @@ class Property < ApplicationRecord
     has_many_attached :images
 
     def self.ransackable_attributes(auth_object = nil)
-        ["city", "continent", "country", "facilities", "name", "neighbourhood", "rating"]
+        ["city", "country", "facilities", "name", "neighbourhood", "rating"]
     end
 end

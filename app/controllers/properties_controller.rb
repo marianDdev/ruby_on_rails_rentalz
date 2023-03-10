@@ -5,7 +5,6 @@ class PropertiesController < ApplicationController
     def index
         @q = Property.ransack(params[:q])
         @properties = @q.result(distinct: true)
-        @countries = CS.countries
     end
 
     def my_properties
@@ -18,6 +17,8 @@ class PropertiesController < ApplicationController
 
     def new
         @property = Property.new
+        @countries = Country.pluck(:name)
+        @cities = City.pluck(:name)
     end
 
     def create
@@ -56,7 +57,6 @@ class PropertiesController < ApplicationController
             params.require(:property).permit(
                 :user_id,
                 :category,
-                :continent,
                 :country,
                 :city,
                 :neighbourhood,
@@ -75,5 +75,6 @@ class PropertiesController < ApplicationController
                 :images
             ).merge(user: current_user, is_available: true)
         end   
-
+    
+    
 end
