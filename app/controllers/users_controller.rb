@@ -9,11 +9,9 @@ class UsersController < ApplicationController
 
         if @user.save
             session[:user_id] = @user.id
-            flash[:success] = 'User has been created.'
             redirect_to root_url
         else 
-            flash.now[:alert] = "User couldn't be created!"
-            render :new    
+            render :new, status: :unprocessable_entity   
         end
     end
 
