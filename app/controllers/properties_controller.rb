@@ -6,7 +6,7 @@ class PropertiesController < ApplicationController
 
     def index
         @q = Property.ransack(params[:q])
-        @properties = @q.result(distinct: true).order(created_at: :desc).limit(20)
+        @pagy, @properties = pagy(@q.result(distinct: true).order(created_at: :desc), items: 20)
     end
 
     def my_properties
