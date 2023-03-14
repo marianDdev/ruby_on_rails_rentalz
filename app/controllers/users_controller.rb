@@ -5,13 +5,15 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.new(user_params)
+        @user = User.create(user_params)
 
         if @user.save
             session[:user_id] = @user.id
+            flash[:success] = 'User has been created.'
             redirect_to root_url
         else 
-            redirect_to '/signup'    
+            flash.now[:alert] = "User couldn't be created!"
+            render :new    
         end
     end
 
