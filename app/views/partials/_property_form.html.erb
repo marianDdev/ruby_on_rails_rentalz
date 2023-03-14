@@ -20,54 +20,54 @@
               </div>
 
               <div class="col-span-6 sm:col-span-4">
-                <%= f.select :country.name, @countries %>
+                <%= f.select :country, @countries %>
               </div>
 
               <div class="col-span-6 sm:col-span-4">
-                <%= f.select :city.name, @cities %>
+                <%= f.select :city, @cities %>
               </div>
 
               <div class="col-span-6 sm:col-span-4">
-            
+
                 <%= f.text_field :neighbourhood, placeholder: "Neighbourhood", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
               </div>
 
 
               <div class="col-span-6 sm:col-span-4">
-            
+
                 <%= f.text_field :name, placeholder: "Name", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
               </div>
 
               <div class="col-span-6 sm:col-span-4">
-            
+
                 <%= f.text_area :description, placeholder: "Description", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-5 text-black" %>
               </div>
                 <div class="col-span-6 sm:col-span-4">
-            
+
                 <%= f.text_area :facilities, placeholder: "Facilities", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md text-black" %>
               </div>
               <div class="col-span-6 sm:col-span-4">
-            
+
                 <%= f.number_field :guests, placeholder: "Number of accepted guests", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
               </div>
               <div class="col-span-6 sm:col-span-4">
-            
+
                 <%= f.number_field :bedrooms, placeholder: "Number of bedrooms", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
               </div>
               <div class="col-span-6 sm:col-span-4">
-            
+
                 <%= f.number_field :beds, placeholder: "Number of beds", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
               </div>
               <div class="col-span-6 sm:col-span-4">
-            
+
                 <%= f.number_field :baths, placeholder: "Number of bathrooms", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
               </div>
               <div class="col-span-6 sm:col-span-4">
-            
+
                 <%= f.number_field :price, placeholder: "Price per night", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
               </div>
                <div class="col-span-6 sm:col-span-4">
-            
+
                 <%= f.text_field :currency, placeholder: "Currency", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
               </div>
 
@@ -75,6 +75,6 @@
                 <%= f.submit "Add", class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
               </div>
           </div>
-         
+
         </div>
       <% end %>

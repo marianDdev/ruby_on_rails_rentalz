@@ -4,6 +4,7 @@ class Property < ApplicationRecord
     has_many :bookings
     has_many_attached :images
 
+    validates :name, presence: true
     validates :category, presence: true
 
     def self.ransackable_attributes(auth_object = nil)

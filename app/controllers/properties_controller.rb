@@ -1,6 +1,8 @@
 class PropertiesController < ApplicationController
 
     before_action :require_owner, only: [:new, :create, :my_properties]
+    before_action :set_countries, only: [:new, :create]
+    before_action :set_cities, only: [:new, :create]
 
     def index
         @q = Property.ransack(params[:q])
@@ -28,7 +30,7 @@ class PropertiesController < ApplicationController
         if @property.save
             redirect_to '/'
         else
-            redirect_to '/properties/new'
+            render :new, status: :unprocessable_entity
         end
     end
 
@@ -37,7 +39,7 @@ class PropertiesController < ApplicationController
          @countries = Country.pluck(:name)
         @cities = City.pluck(:name)
     end
-    
+
     def update
         @property = Property.find(params[:id])
         if @property.update(property_params)
@@ -73,7 +75,12 @@ class PropertiesController < ApplicationController
                 :currency,
                 :images
             ).merge(user: current_user, is_available: true)
-        end   
-    
-    
+        end
+
+    def set_countries
+        @countries = Country.pluck(:name)
+    end
+    def set_cities
+        @cities = City.pluck(:name)
+    end
 end
