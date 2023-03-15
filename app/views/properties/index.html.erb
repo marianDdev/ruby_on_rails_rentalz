@@ -1,33 +1,32 @@
+<div
+  class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5"
+>
+  <%= sort_link(@q, :name, "Sort by name") %> <%= sort_link(@q, :country, "Sort
+  by country") %> <%= sort_link(@q, :city, "Sort by city") %> <%
+  @properties.each do |p| %> <%= link_to(p) do%>
+  <div class="max-w-sm rounded overflow-hidden shadow-lg">
+    <% if p.images.attached? %> <%= image_tag p.images.first, class: 'w-full' %>
+    <% else %> <%= image_tag 'apartment.jpeg', class: 'w-full' %> <% end %>
+    <div class="px-6 py-4">
+      <div class="font-bold text-xl mb-2"><%= p.city %>, <%= p.country %></div>
+      <p class="text-gray-700 text-base"><%= p.description %></p>
+    </div>
+    <div class="px-6 pt-4 pb-2">
+      <span
+        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+        ><%= p.rating %> stars</span
+      >
+      <span
+        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+        ><%= p.reviews %> reviews</span
+      >
+      <span
+        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+        ><%= p.category %></span
+      >
+    </div>
+  </div>
+  <% end %> <% end %>
+</div>
 
-
-                  <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
-                  <%= sort_link(@q, :name, "Sort by name") %>
-                  <%= sort_link(@q, :country, "Sort by country") %>
-                  <%= sort_link(@q, :city, "Sort by city") %>
-
-                <% @properties.each do |p| %>
-                 <%= link_to(p) do%>
-                   <div class="max-w-sm rounded overflow-hidden shadow-lg">
-                        <% if p.images.attached? %>
-                            <%= image_tag p.images.first, class: 'w-full' %>
-                        <% else %>
-                            <%= image_tag 'apartment.jpeg', class: 'w-full' %>
-                        <% end %>    
-                        <div class="px-6 py-4">
-                            <div class="font-bold text-xl mb-2"><%= p.city %>, <%= p.country %></div>
-                            <p class="text-gray-700 text-base">
-                                <%= p.description %>
-                            </p>
-                        </div>
-                        <div class="px-6 pt-4 pb-2">
-                            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><%= p.rating %> stars</span>
-                            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><%= p.reviews %> reviews</span>
-                            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><%= p.category %></span>
-                            
-                        </div>
-                    </div>
-                     <% end %>
-                <% end %>
-
-                <%= pagy_nav(@pagy).html_safe %>
-                </div>
+<div><%= pagy_nav(@pagy).html_safe %></div>
