@@ -13,7 +13,6 @@ Rails.application.routes.draw do
 
   get '/about', to: 'pages#about'
   get '/contact', to: 'pages#contact'
-  get '/dashboard', to: 'pages#dashboard'
 
   resources :bookings
   patch '/bookings/:id/approve', to: 'bookings#approve', as: 'approve'
