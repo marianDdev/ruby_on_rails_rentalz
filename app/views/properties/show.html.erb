@@ -27,13 +27,6 @@
     <div class="mt-6 flex items-center gap-8 text-xs">
       <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
 
-        <div class="mt-1.5 sm:mt-0">
-          <p class="text-gray-500">Parking</p>
-
-          <p class="font-medium">2 spaces</p>
-        </div>
-      </div>
-
       <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
 
         <div class="mt-1.5 sm:mt-0">
@@ -44,36 +37,33 @@
       <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
 
         <div class="mt-1.5 sm:mt-0">
-          <p class="text-gray-500">Bedroom</p>
-
-          <p class="font-medium"><%= @property.bedrooms %> rooms</p>
+          <p class="text-gray-500"><%= @property.bedrooms %> Bedrooms</p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<% if current_user.guest? %>
+<% if current_user && current_user.guest? %>
 <div class="block rounded-lg p-4 shadow-sm shadow-indigo-100">
   <div class="mt-2">
-    <dl>
       <div> 
-        <dd class="font-medium"><%= link_to "Reserve", new_booking_path(id: @property.id) %></dd>
+        <%= link_to "Reserve", new_booking_path(id: @property.id), class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2" %>
       </div>
-    </dl>
   </div>
 </div>
 
 <% end %>
 
-<% if current_user.owner? %>
+<% if @property.user == current_user %>
 <div class="block rounded-lg p-4 shadow-sm shadow-indigo-100">
   <div class="mt-2">
-    <dl>
-      <div>      
-        <dd class="font-medium"><%= link_to "Show booking requests", bookings_path(property_id: @property.id) %></dd>
+      <div class="flex">      
+        <%= link_to "Show booking requests", bookings_path(property_id: @property.id), class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2" %>
+        <%= link_to "Edit", edit_property_path(@property.id), class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2" %>
+        <%= button_to "Delete", property_path(@property), method: :delete, class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
       </div>
-    </dl>
+    
   </div>
 </div>
 

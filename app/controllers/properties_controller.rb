@@ -10,7 +10,7 @@ class PropertiesController < ApplicationController
     end
 
     def my_properties
-        @properties = current_user.properties.order(created_at: :desc)
+        @pagy, @properties =pagy(current_user.properties.order(created_at: :desc))
     end
 
     def show

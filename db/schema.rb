@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_08_211721) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_19_134909) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -49,6 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_211721) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "decline_reason"
     t.index ["guest_id"], name: "index_bookings_on_guest_id"
     t.index ["owner_id"], name: "index_bookings_on_owner_id"
     t.index ["property_id"], name: "index_bookings_on_property_id"
@@ -68,6 +69,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_211721) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "subject"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "properties", force: :cascade do |t|
@@ -108,5 +118,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_211721) do
   add_foreign_key "bookings", "users", column: "guest_id"
   add_foreign_key "bookings", "users", column: "owner_id"
   add_foreign_key "cities", "countries"
+  add_foreign_key "messages", "users"
   add_foreign_key "properties", "users"
 end
