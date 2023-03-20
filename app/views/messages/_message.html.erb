@@ -1,0 +1,23 @@
+<section class="bg-white dark:bg-gray-900">
+    <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+        <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Thank you for getting in touch! </h2>
+            <p class="mb-4">We appreciate you contacting Rentalz. One of our colleagues will get back in touch with you soon! Have a great day!</p>
+        </div>
+    </div>
+    <div id="<%= dom_id message %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Subject: <%= message.subject %></strong>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Your message: <%= message.content %></strong>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this message", message, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this message', edit_message_path(message), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
+</section>

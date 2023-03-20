@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages
   
   resources :properties
   get '/my_properties', to: 'properties#my_properties'
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
 
   get '/about', to: 'pages#about'
   get '/contact', to: 'pages#contact'
-  get '/dashboard', to: 'pages#dashboard'
+  get '/thanks', to: 'pages#thanks'
 
   resources :bookings
   patch '/bookings/:id/approve', to: 'bookings#approve', as: 'approve'
