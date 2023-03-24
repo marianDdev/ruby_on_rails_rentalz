@@ -19,5 +19,4 @@ Rails.application.routes.draw do
   resources :bookings
   patch '/bookings/:id/approve', to: 'bookings#approve', as: 'approve'
   patch '/bookings/:id/decline', to: 'bookings#decline', as: 'decline'
-
 end
