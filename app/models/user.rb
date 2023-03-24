@@ -5,6 +5,7 @@ class User < ApplicationRecord
     has_many :owner_bookings, class_name: 'Booking', foreign_key: 'owner_id'
     has_many :guest_bookings, class_name: 'Booking', foreign_key: 'guest_id'
     has_many :messages
+    has_many :reviews
 
     validates :email,
             presence: true,
