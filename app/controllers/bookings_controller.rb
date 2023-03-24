@@ -40,7 +40,7 @@ class BookingsController < ApplicationController
         if @booking.update(booking_params)
             redirect_to @booking
         else
-           render :edit
+           render :edit, status: :unprocessable_entity
         end
     end
 
@@ -59,7 +59,7 @@ class BookingsController < ApplicationController
         if @booking.update(booking_params)
             redirect_to @booking
         else
-            render :edit_status
+            render :edit, status: :unprocessable_entity
         end
     end
 
