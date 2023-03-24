@@ -1,7 +1,4 @@
 class BookingsController < ApplicationController
-
-    before_action :require_guest, only: [:new, :create, :edit, :update]
-
     def index
         if current_user.owner?
             @bookings = current_user.owner_bookings.where(property_id_condition)
@@ -30,7 +27,7 @@ class BookingsController < ApplicationController
         if @booking.save
             redirect_to @booking
         else
-            render 'new'
+            render :new, status: :unprocessable_entity
         end    
     end
 
@@ -40,9 +37,11 @@ class BookingsController < ApplicationController
 
       def update
         @booking = Booking.find(params[:id])
-        @booking.update(booking_params)
-
-        redirect_to @booking
+        if @booking.update(booking_params)
+            redirect_to @booking
+        else
+           render :edit
+        end
     end
 
     def approve
@@ -51,16 +50,23 @@ class BookingsController < ApplicationController
         redirect_to @booking
     end
 
+    def edit_status
+         @booking = Booking.find(params[:id])
+    end
+
     def decline
         @booking = Booking.find(params[:id])
-        @booking.update(status: "declined") 
-        redirect_to @booking
+        if @booking.update(booking_params)
+            redirect_to @booking
+        else
+            render :edit_status
+        end
     end
 
     private
         def booking_params
             params.require(:booking)
-            .permit(:guest_id, :owner_id, :property_id, :start_at, :end_at, :guests_count, :status)
+            .permit(:guest_id, :owner_id, :property_id, :start_at, :end_at, :guests_count, :status, :decline_reason)
         end
 
     private

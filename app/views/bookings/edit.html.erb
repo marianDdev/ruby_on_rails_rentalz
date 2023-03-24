@@ -1,6 +1,17 @@
 <div class="flex items-center justify-center p-12">
   <div class="mx-auto w-full max-w-[550px]">
     <%= form_with model: @booking do |f| %>
+    <% if current_user.owner? && @booking.owner == current_user %>
+      <div class="-mx-3 flex flex-wrap">
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <%= f.label "Decline reason", class: "mb-3 block text-base font-medium text-[#07074D]" %>
+            <%= f.text_area :decline_reason, class: "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
+          </div>
+          <%=f.hidden_field :status, :value => 'declined', readonly: true %>
+        </div>
+      </div>
+  <% else %>
       <div class="-mx-3 flex flex-wrap">
         <div class="w-full px-3 sm:w-1/2">
           <div class="mb-5">
@@ -24,6 +35,7 @@
           </div>
         </div>
       </div>
+      <% end %>
       <div>
         <%= f.submit "Edit booking", class: "w-full text-black bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" %>
       </div>
