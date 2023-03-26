@@ -1,10 +1,18 @@
 class BookingsController < ApplicationController
     def index
+        @today = Date.today
+
         if current_user.owner?
             @bookings = current_user.owner_bookings.where(property_id_condition)
-            
+            @past_bookings = @bookings.where('end_at < ?', @today)
+            @future_bookings = @bookings.where('start_at > ?', @today)
+            @current_bookings = @bookings.where('start_at <= ? and end_at > ?', @today, @today)
+
         elsif current_user.guest?
             @bookings = current_user.guest_bookings.where(property_id_condition)
+            @past_bookings = @bookings.where('end_at < ?', @today)
+            @future_bookings = @bookings.where('start_at >= ?', @today)
+            @current_bookings = @bookings.where('start_at <= ? and end_at > ?', @today, @today)
         end
     end
 
@@ -73,5 +81,4 @@ class BookingsController < ApplicationController
         def property_id_condition
             ['property_id = ?', params[:property_id]] unless params[:property_id].blank?
         end
-
 end

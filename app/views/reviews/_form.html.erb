@@ -11,24 +11,16 @@
     </div>
   <% end %>
 
+   <%=form.hidden_field :user_id, :value => current_user.id, readonly: true %>
+   <%=form.hidden_field :property_id, :value => @property_id, readonly: true %>
   <div class="my-5">
     <%= form.label :rating %>
-    <%= form.number_field :rating, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.select :rating, [1,2,3,4,5], class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
   </div>
 
   <div class="my-5">
     <%= form.label :message %>
     <%= form.text_area :message, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :property_id %>
-    <%= form.text_field :property_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="inline">

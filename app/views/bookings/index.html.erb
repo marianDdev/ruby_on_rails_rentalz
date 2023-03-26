@@ -1,7 +1,46 @@
+
+<section class="bg-white dark:bg-gray-900">
+    <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+        <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white text-center">Current bookings</h2>            
+        </div>
+    </div>
+</section>
 <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-5">
-    <% @bookings.each do |b| %>
+    <% @current_bookings.each do |b| %>
         <%= link_to(b) do%>
-            <%= render 'partials/booking_card', b: b %>
+            <%= render 'partials/booking_card', b: b, reviewable: false %>
+        <% end %>
+    <% end %>
+</div>
+
+<section class="bg-white dark:bg-gray-900">
+    <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+        <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white text-center">Future bookings</h2>            
+        </div>
+    </div>
+</section>
+<div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-5">
+    <% @future_bookings.each do |b| %>
+        <%= link_to(b) do%>
+            <%= render 'partials/booking_card', b: b, reviewable: false %>
+        <% end %>
+    <% end %>
+</div>
+
+
+<section class="bg-white dark:bg-gray-900">
+    <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+        <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white text-center">Past bookings</h2>            
+        </div>
+    </div>
+</section>
+<div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-5">
+    <% @past_bookings.each do |b| %>
+        <%= link_to(b) do%>
+            <%= render 'partials/booking_card', b: b, reviewable: true %>
         <% end %>
     <% end %>
 </div>

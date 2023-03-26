@@ -13,6 +13,10 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @review = Review.new
+    q = request.query_parameters
+    @booking = Booking.find(q[:id])
+    @property_id = @booking.property.id
+    @guest = current_user
   end
 
   # GET /reviews/1/edit
@@ -26,10 +30,8 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.save
         format.html { redirect_to review_url(@review), notice: "Review was successfully created." }
-        format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -39,10 +41,8 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.update(review_params)
         format.html { redirect_to review_url(@review), notice: "Review was successfully updated." }
-        format.json { render :show, status: :ok, location: @review }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -53,7 +53,6 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to reviews_url, notice: "Review was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 
@@ -67,4 +66,9 @@ class ReviewsController < ApplicationController
     def review_params
       params.require(:review).permit(:rating, :message, :property_id, :user_id)
     end
+
+   private
+        def booking_id_condition
+            ['booking_id = ?', params[:booking_id]] unless params[:booking_id].blank?
+        end
 end
