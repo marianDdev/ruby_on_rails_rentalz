@@ -1,19 +1,6 @@
 class BookingsController < ApplicationController
-    def index
-        @today = Date.today
-
-        if current_user.owner?
-            @bookings = current_user.owner_bookings.where(property_id_condition)
-            @past_bookings = @bookings.where('end_at < ?', @today)
-            @future_bookings = @bookings.where('start_at > ?', @today)
-            @current_bookings = @bookings.where('start_at <= ? and end_at > ?', @today, @today)
-
-        elsif current_user.guest?
-            @bookings = current_user.guest_bookings.where(property_id_condition)
-            @past_bookings = @bookings.where('end_at < ?', @today)
-            @future_bookings = @bookings.where('start_at >= ?', @today)
-            @current_bookings = @bookings.where('start_at <= ? and end_at > ?', @today, @today)
-        end
+    def index        
+        get_bookings_by_user_role(current_user)
     end
 
     def show
@@ -75,6 +62,20 @@ class BookingsController < ApplicationController
         def booking_params
             params.require(:booking)
             .permit(:guest_id, :owner_id, :property_id, :start_at, :end_at, :guests_count, :status, :decline_reason)
+        end
+    
+    private
+        def get_bookings_by_user_role(current_user)
+            @bookings = current_user.owner? ? current_user.owner_bookings.where(property_id_condition) : current_user.guest_bookings.where(property_id_condition)
+            get_bookings_by_checkin(@bookings)
+        end
+    
+    private
+        def get_bookings_by_checkin(bookings)
+            @today = Date.today
+            @past_bookings = bookings.where('end_at < ?', @today)
+            @future_bookings = bookings.where('start_at > ?', @today)
+            @current_bookings = bookings.where('start_at <= ? and end_at > ?', @today, @today)
         end
 
     private
