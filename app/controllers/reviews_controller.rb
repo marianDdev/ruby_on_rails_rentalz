@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     q = request.query_parameters
-    @booking = Booking.find(q[:id])
+    @booking = Booking.find(q[:booking_id])
     @property_id = @booking.property.id
     @guest = current_user
   end
@@ -26,9 +26,13 @@ class ReviewsController < ApplicationController
   # POST /reviews or /reviews.json
   def create
     @review = Review.new(review_params)
+    @booking = @review.property.bookings.where('guest_id': current_user.id).first
 
     respond_to do |format|
       if @review.save
+        @booking.is_reviewed = true
+        @booking.save
+
         format.html { redirect_to review_url(@review), notice: "Review was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }

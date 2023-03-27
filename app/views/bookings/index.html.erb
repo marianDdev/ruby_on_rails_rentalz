@@ -9,7 +9,7 @@
 <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-5">
     <% @current_bookings.each do |b| %>
         <%= link_to(b) do%>
-            <%= render 'partials/booking_card', b: b, reviewable: false %>
+            <%= render 'partials/booking_card', b: b %>
         <% end %>
     <% end %>
 </div>
@@ -24,7 +24,7 @@
 <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-5">
     <% @future_bookings.each do |b| %>
         <%= link_to(b) do%>
-            <%= render 'partials/booking_card', b: b, reviewable: false %>
+            <%= render 'partials/booking_card', b: b %>
         <% end %>
     <% end %>
 </div>
@@ -40,7 +40,7 @@
 <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-5">
     <% @past_bookings.each do |b| %>
         <%= link_to(b) do%>
-            <%= render 'partials/booking_card', b: b, reviewable: true %>
+            <%= render 'partials/booking_card', b: b %>
         <% end %>
     <% end %>
 </div>

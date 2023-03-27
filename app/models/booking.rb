@@ -12,4 +12,8 @@ class Booking < ApplicationRecord
     def approved?
         self.status = 'approved'
     end
+
+    def reviewable?
+        self.is_reviewed == false && self.approved?
+    end
 end
