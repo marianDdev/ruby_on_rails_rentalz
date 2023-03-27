@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :reviews
+  get '/properties/:id/reviews', to: 'reviews#index'
   
   resources :messages
   

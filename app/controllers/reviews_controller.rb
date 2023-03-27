@@ -3,7 +3,9 @@ class ReviewsController < ApplicationController
 
   # GET /reviews or /reviews.json
   def index
-    @reviews = Review.all
+    q = request.query_parameters
+    @reviews = Review.where('property_id': q[:id])
+    @property = Property.find(q[:id])
   end
 
   # GET /reviews/1 or /reviews/1.json
