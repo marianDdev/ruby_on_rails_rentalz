@@ -2,6 +2,7 @@ class Property < ApplicationRecord
 
     belongs_to :user
     has_many :bookings
+    has_many :reviews
     has_many_attached :images
 
     @countries = Country.pluck(:name)
@@ -18,5 +19,13 @@ class Property < ApplicationRecord
 
     def self.ransackable_associations(auth_object = nil)
         ["bookings", "images_attachments", "images_blobs", "user"]
+    end
+
+    def rating
+        self.reviews.average(:rating)
+    end
+
+    def reviews_count
+        self.reviews.count
     end
 end
