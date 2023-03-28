@@ -4,8 +4,8 @@ class ReviewsController < ApplicationController
   # GET /reviews or /reviews.json
   def index
     q = request.query_parameters
-    @reviews = Review.where('property_id': q[:id])
-    @property = Property.find(q[:id])
+    @reviews = Review.where('property_id': q[:property_id])
+    @property = Property.find(q[:property_id])
   end
 
   # GET /reviews/1 or /reviews/1.json
@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
         @booking.is_reviewed = true
         @booking.save
 
-        format.html { redirect_to review_url(@review, @property), notice: "Review was successfully created." }
+        format.html { redirect_to review_url(@review), notice: "Review was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end

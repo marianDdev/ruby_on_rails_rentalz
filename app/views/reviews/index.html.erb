@@ -9,6 +9,6 @@
 <% end %>
 <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-5">
   <% @reviews.each do |r| %>
-    <%= render('partials/review_card', :review => r) %>
+    <%= render('partials/review_card', :@review => r, :property => @property) %>
   <% end %>
 </div>
