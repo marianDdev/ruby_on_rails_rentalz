@@ -1,4 +1,38 @@
 <div class="flex items-center justify-center p-12">
+  <section class="bg-white dark:bg-gray-900">
+    <div
+      class="
+        gap-16
+        items-center
+        py-8
+        px-4
+        mx-auto
+        max-w-screen-xl
+        lg:grid
+        lg:grid-cols-2
+        lg:py-16
+        lg:px-6
+      "
+    >
+      <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+        <h2
+          class="
+            mb-4
+            text-2xl
+            tracking-tight
+            font-extrabold
+            text-gray-900
+            dark:text-white
+            text-center
+          "
+        >Create a booking request for
+          <%= @property.name %>
+          from
+          <%= @property.city %>,
+          <%= @property.country %></h2>
+      </div>
+    </div>
+  </section>
   <div class="mx-auto w-full max-w-[550px]">
     <%= form_with model: @booking do |f| %>
       <%= f.hidden_field :guest_id, value: current_user.id %>
@@ -20,7 +54,7 @@
       <div class="-mx-3 flex flex-wrap">
         <div class="w-full px-3 sm:w-1/2">
           <div class="mb-5">
-            <% f.label "Check-in", class: "mb-3 block text-base font-medium text-[#07074D]" %>
+            <%= f.label "Check-in", class: "mb-3 block text-base font-medium text-[#07074D]" %>
             <%= f.date_field :start_at,
                          class:
                            "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
@@ -28,7 +62,7 @@
         </div>
         <div class="w-full px-3 sm:w-1/2">
           <div class="mb-5">
-            <% f.label "Checkout", class: "mb-3 block text-base font-medium text-[#07074D]" %>
+            <%= f.label "Checkout", class: "mb-3 block text-base font-medium text-[#07074D]" %>
             <%= f.date_field :end_at,
                          class:
                            "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
