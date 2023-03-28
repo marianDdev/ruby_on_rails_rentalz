@@ -29,13 +29,14 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @booking = @review.property.bookings.where('guest_id': current_user.id).first
+    @property = @booking.property
 
     respond_to do |format|
       if @review.save
         @booking.is_reviewed = true
         @booking.save
 
-        format.html { redirect_to review_url(@review), notice: "Review was successfully created." }
+        format.html { redirect_to review_url(@review, @property), notice: "Review was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end

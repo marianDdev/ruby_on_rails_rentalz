@@ -5,11 +5,5 @@
     <% end %>
 
     <%= render 'partials/review_card' %>
-
-    <%= link_to 'Edit this review', edit_review_path(@review), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this review', review_path(@review), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-    </div>
-    <%= link_to 'Back to reviews', reviews_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>
