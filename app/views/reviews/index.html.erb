@@ -1,14 +1,52 @@
- <%= link_to(@property) do%>
+<%= link_to(@property) do %>
   <section class="bg-white dark:bg-gray-900">
-      <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
-          <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-              <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white text-center">Reviews for <%= @property.name %> - <%= @property.city %>, <%= @property.country %></h2>            
-          </div>
+    <div
+      class="
+        gap-16
+        items-center
+        py-8
+        px-4
+        mx-auto
+        max-w-screen-xl
+        lg:grid
+        lg:grid-cols-2
+        lg:py-16
+        lg:px-6
+      "
+    >
+      <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+        <h2
+          class="
+            mb-4
+            text-4xl
+            tracking-tight
+            font-extrabold
+            text-gray-900
+            dark:text-white
+            text-center
+          "
+        >Reviews for
+          <%= @property.name %>
+          -
+          <%= @property.city %>,
+          <%= @property.country %></h2>
       </div>
+    </div>
   </section>
 <% end %>
-<div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-5">
+<div
+  class="
+    p-10
+    grid
+    grid-cols-1
+    sm:grid-cols-1
+    md:grid-cols-4
+    lg:grid-cols-4
+    xl:grid-cols-4
+    gap-5
+  "
+>
   <% @reviews.each do |r| %>
-    <%= render('partials/review_card', :@review => r, :property => @property) %>
+    <%= render("partials/review_card", :@review => r, :property => @property) %>
   <% end %>
 </div>

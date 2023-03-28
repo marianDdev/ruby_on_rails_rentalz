@@ -1,19 +1,29 @@
 <div class="h-104 rounded overflow-hidden shadow-lg">
-    <div class="px-6 py-4">
-      <% if b.property.images.attached? %>
-        <%= image_tag b.property.images.first, class: "h-56 w-full" %>
-      <% else %>
-        <%= image_tag 'apartment.jpeg' %>
-      <% end %>
-      <div class="font-bold text-xl mb-2">Guest: <%= b.guest.first_name %> <%= b.guest.last_name %></div>
-      <p class="text-gray-700 text-base">Host: <%= b.owner.first_name %></p>
-      <p class="text-gray-700 text-base">Check-in: <%= b.start_at %></p>
-      <p class="text-gray-700 text-base">Checkout: <%= b.end_at %></p>
-      <p class="text-gray-700 text-base">Guests number: <%= b.guests_count %></p>
-      <p class="text-gray-700 text-base">Status: <%= b.status %></p>
+  <div class="px-6 py-4">
+    <% if b.property.images.attached? %>
+      <%= image_tag b.property.images.first, class: "h-56 w-full" %>
+    <% else %>
+      <%= image_tag "apartment.jpeg" %>
+    <% end %>
+    <div class="font-bold text-xl mb-2">Guest:
+      <%= b.guest.first_name %>
+      <%= b.guest.last_name %></div>
+    <p class="text-gray-700 text-base">Host:
+      <%= b.owner.first_name %></p>
+    <p class="text-gray-700 text-base">Check-in:
+      <%= b.start_at %></p>
+    <p class="text-gray-700 text-base">Checkout:
+      <%= b.end_at %></p>
+    <p class="text-gray-700 text-base">Guests number:
+      <%= b.guests_count %></p>
+    <p class="text-gray-700 text-base">Status:
+      <%= b.status %></p>
 
-      <% if current_user.id == b.guest_id && b.reviewable? %>
-        <%= link_to "Add review", new_review_path(booking_id: b.id), class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2" %>
-      <% end %>
-    </div> 
+    <% if current_user.id == b.guest_id && b.reviewable? %>
+      <%= link_to "Add review",
+      new_review_path(booking_id: b.id),
+      class:
+        "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2" %>
+    <% end %>
+  </div>
 </div>
