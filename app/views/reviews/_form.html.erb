@@ -16,7 +16,7 @@
   <% end %>
 
   <%= form.hidden_field :user_id, value: current_user.id, readonly: true %>
-  <%= form.hidden_field :property_id, value: @property_id, readonly: true %>
+  <%= form.hidden_field :property_id, value: @property.id, readonly: true %>
   <div class="my-5">
     <%= form.label :rating %>
     <%= form.select :rating,

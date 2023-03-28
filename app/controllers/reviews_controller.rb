@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
     @review = Review.new
     q = request.query_parameters
     @booking = Booking.find(q[:booking_id])
-    @property_id = @booking.property.id
+    @property = @booking.property
     @guest = current_user
   end
 

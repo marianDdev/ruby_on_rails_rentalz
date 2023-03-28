@@ -1,9 +1,38 @@
+<section class="bg-white dark:bg-gray-900">
+  <div
+    class="
+      gap-16
+      items-center
+      py-8
+      px-4
+      mx-auto
+      max-w-screen-xl
+      lg:grid
+      lg:grid-cols-2
+      lg:py-16
+      lg:px-6
+    "
+  >
+    <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+      <h2
+        class="
+          mb-4
+          text-xl
+          tracking-tight
+          font-extrabold
+          text-gray-900
+          dark:text-white
+          text-center
+        "
+      >Add a rating for your stay at
+        <%= @property.name %>
+        from
+        <%= @property.city %>,
+        <%= @property.country %></h2>
+    </div>
+  </div>
+</section>
+
 <div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">New review</h1>
-
   <%= render "form", review: @review %>
-
-  <%= link_to "Back to reviews",
-  reviews_path,
-  class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 </div>
