@@ -44,23 +44,21 @@ end
 @countries.each do |country|
     country.cities.limit(3).each do |city|
         Property.create(
-        category: property_types.sample,
-        country: country.name,
-        city: city.name,
-        neighbourhood: Faker::Address.full_address,
-        name: Faker::Name.name,
-        description: Faker::Markdown.emphasis,
-        facilities: Faker::Markdown.emphasis,
-        rating: Faker::Number.decimal(l_digits: 1),
-        reviews: Faker::Number.number(digits: 5),
-        guests: rand(4),
-        bedrooms: rand(3),
-        beds: rand(3),
-        baths: rand(3),
-        price: Faker::Number.number(digits: 4),
-        currency: Faker::Currency.code,
-        is_available: [true, false].sample,
-        user_id: @users.sample.id,
+            user_id: @users.sample.id,
+            category: property_types.sample,
+            country: country.name,
+            city: city.name,
+            neighbourhood: Faker::Address.full_address,
+            name: Faker::Name.name,
+            description: Faker::Markdown.emphasis,
+            facilities: Faker::Markdown.emphasis,
+            guests: rand(4),
+            bedrooms: rand(3),
+            beds: rand(3),
+            baths: rand(3),
+            price: Faker::Number.number(digits: 4),
+            currency: Faker::Currency.code,
+            is_available: [true, false].sample,
     )
     end
 end

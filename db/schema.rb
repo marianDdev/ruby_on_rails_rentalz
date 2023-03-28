@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_03_27_085429) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -40,9 +43,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_085429) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.integer "guest_id"
-    t.integer "owner_id"
-    t.integer "property_id"
+    t.bigint "guest_id"
+    t.bigint "owner_id"
+    t.bigint "property_id"
     t.date "start_at"
     t.date "end_at"
     t.integer "guests_count"
@@ -57,7 +60,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_085429) do
   end
 
   create_table "cities", force: :cascade do |t|
-    t.integer "country_id"
+    t.bigint "country_id"
     t.string "name"
     t.string "country_code"
     t.datetime "created_at", null: false
@@ -73,7 +76,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_085429) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "subject"
     t.text "content"
     t.datetime "created_at", null: false
@@ -82,7 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_085429) do
   end
 
   create_table "properties", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "category"
     t.string "country"
     t.string "city"
@@ -105,8 +108,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_085429) do
   create_table "reviews", force: :cascade do |t|
     t.integer "rating"
     t.text "message"
-    t.integer "property_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "property_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["property_id"], name: "index_reviews_on_property_id"
