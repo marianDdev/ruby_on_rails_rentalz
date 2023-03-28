@@ -1,7 +1,18 @@
-<div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-5">
+<div
+  class="
+    p-10
+    grid
+    grid-cols-1
+    sm:grid-cols-1
+    md:grid-cols-4
+    lg:grid-cols-4
+    xl:grid-cols-4
+    gap-5
+  "
+>
   <% @properties.each do |p| %>
-    <%= render('partials/property_card', :p => p) %>
+    <%= render("partials/property_card", p: p) %>
   <% end %>
 </div>
 
-<%= render('partials/pagination') %>
+<%= render("partials/pagination") %>
