@@ -6,7 +6,8 @@
     <% end %>
     <div class="px-6 py-4">
         <%= link_to(p) do%>
-            <div class="font-bold text-xl mb-2"><%= p.city %>, <%= p.country %></div>
+            <div class="font-bold text-xl mb-2"><%= p.name %></div>
+            <div class="font-bold text-l mb-2"><%= p.city %>, <%= p.country %></div>
         <% end %>
       <p class="text-gray-700 text-base"><%= p.description %></p>
     </div>

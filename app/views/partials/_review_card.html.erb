@@ -2,7 +2,7 @@
     <% if review.property.images.attached? %>
         <%= image_tag review.property.images.first, class: "h-56 w-full" %>
     <% else %>
-        <%= image_tag 'apartment.jpeg' %>
+        <%= image_tag 'https://img.freepik.com/free-photo/modern-living-room-style_53876-144814.jpg?w=1380&t=st=1679986771~exp=1679987371~hmac=8f503fc971412595ec3a4b7508c2ca8228137bcc8a11ed170d602519fecb6a12' %>
     <% end %>
     <div class="px-6 py-4">
         <div class="font-bold text-xl mb-2"><%= review.user.first_name %>, <%= review.user.last_name %></div>

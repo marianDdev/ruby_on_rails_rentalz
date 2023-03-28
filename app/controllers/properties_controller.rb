@@ -80,6 +80,7 @@ class PropertiesController < ApplicationController
     def set_countries
         @countries = Country.pluck(:name)
     end
+    
     def set_cities
         @cities = City.pluck(:name)
     end
