@@ -11,7 +11,6 @@ class User < ApplicationRecord
             presence: true,
             uniqueness: true,
             format: { with: /^(.+)@(.+)$/, message: "Email invalid", multiline: true  },
-            uniqueness: { case_sensitive: false },
             length: { minimum: 4, maximum: 254 }
     validates :password, presence: true
     validates :first_name, presence: true
