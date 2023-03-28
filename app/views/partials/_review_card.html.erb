@@ -1,6 +1,6 @@
 <div class="h-104 rounded overflow-hidden shadow-lg">
     <% if review.property.images.attached? %>
-        <%= image_tag review.property.images.images.first, class: "h-56 w-full" %>
+        <%= image_tag review.property.images.first, class: "h-56 w-full" %>
     <% else %>
         <%= image_tag 'apartment.jpeg' %>
     <% end %>
@@ -15,5 +15,4 @@
     <div class="px-6 py-4 flex">
         <span class="text-sm font-medium text-gray-900 dark:text-white">"<%= review.message %>"</span>
     </div>
-   
 </div>
