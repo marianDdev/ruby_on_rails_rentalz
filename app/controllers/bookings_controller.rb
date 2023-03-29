@@ -1,4 +1,7 @@
 class BookingsController < ApplicationController
+  before_action :require_guest, only: %i[new create]
+  before_action :require_owner, only: %i[approve edit_status decline]
+
   def index
     get_bookings_by_user_role(current_user)
   end
@@ -13,7 +16,6 @@ class BookingsController < ApplicationController
     @property = Property.find(q[:id])
     @property_id = @property[:id]
     @owner_id = @property.user[:id]
-    @guest = current_user
   end
 
   def create
@@ -96,8 +98,6 @@ class BookingsController < ApplicationController
     @current_bookings =
       bookings.where('start_at <= ? and end_at > ?', @today, @today)
   end
-
-  private
 
   def property_id_condition
     ['property_id = ?', params[:property_id]] unless params[:property_id].blank?
