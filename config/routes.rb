@@ -22,6 +22,10 @@ Rails.application.routes.draw do
   get '/help/guest', to: 'pages#guest_help', as: 'guest_help'
 
   resources :bookings
+  get '/bookings/:id/edit_status', to: 'bookings#edit_status', as: 'edit_status'
+  patch '/bookings/:id/update_status',
+        to: 'bookings#update_status',
+        as: 'update_status'
   patch '/bookings/:id/approve', to: 'bookings#approve', as: 'approve'
   patch '/bookings/:id/decline', to: 'bookings#decline', as: 'decline'
 end

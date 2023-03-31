@@ -1,51 +1,37 @@
 <div class="flex items-center justify-center p-12">
   <div class="mx-auto w-full max-w-[550px]">
     <%= form_with model: @booking do |f| %>
-      <% if current_user.owner? && @booking.owner == current_user %>
-        <div class="-mx-3 flex flex-wrap">
-          <div class="w-full px-3 sm:w-1/2">
-            <div class="mb-5">
-              <%= f.label "Decline reason",
-                      class: "mb-3 block text-base font-medium text-[#07074D]" %>
-              <%= f.text_area :decline_reason,
-                          class:
-                            "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
-            </div>
-            <%= f.hidden_field :status, value: "declined", readonly: true %>
-          </div>
-        </div>
-      <% else %>
-        <div class="-mx-3 flex flex-wrap">
-          <div class="w-full px-3 sm:w-1/2">
-            <div class="mb-5">
-              <%= f.label "Number of guests",
-                      class: "mb-3 block text-base font-medium text-[#07074D]" %>
-              <%= f.number_field :guests_count,
-                             class:
-                               "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
-            </div>
-          </div>
-        </div>
 
-        <div class="-mx-3 flex flex-wrap">
-          <div class="w-full px-3 sm:w-1/2">
-            <div class="mb-5">
-              <% f.label "Check-in", class: "mb-3 block text-base font-medium text-[#07074D]" %>
-              <%= f.date_field :start_at,
+      <div class="-mx-3 flex flex-wrap">
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <%= f.label "Number of guests",
+                    class: "mb-3 block text-base font-medium text-[#07074D]" %>
+            <%= f.number_field :guests_count,
                            class:
                              "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
-            </div>
-          </div>
-          <div class="w-full px-3 sm:w-1/2">
-            <div class="mb-5">
-              <% f.label "Checkout", class: "mb-3 block text-base font-medium text-[#07074D]" %>
-              <%= f.date_field :end_at,
-                           class:
-                             "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
-            </div>
           </div>
         </div>
-      <% end %>
+      </div>
+
+      <div class="-mx-3 flex flex-wrap">
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <% f.label "Check-in", class: "mb-3 block text-base font-medium text-[#07074D]" %>
+            <%= f.date_field :start_at,
+                         class:
+                           "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
+          </div>
+        </div>
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <% f.label "Checkout", class: "mb-3 block text-base font-medium text-[#07074D]" %>
+            <%= f.date_field :end_at,
+                         class:
+                           "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
+          </div>
+        </div>
+      </div>
       <div>
         <%= f.submit "Submit",
                  class:
