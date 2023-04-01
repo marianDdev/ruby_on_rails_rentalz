@@ -61,7 +61,7 @@
 
   <% end %>
 
-  <% if @property.user == current_user %>
+  <% if @property.user_id == current_user.id %>
     <div class="block rounded-lg p-4 shadow-sm shadow-indigo-100">
       <div class="mt-2">
         <div class="flex">
