@@ -42,6 +42,7 @@ class PropertiesController < ApplicationController
 
   def update
     @property = Property.find(params[:id])
+    @property.images.attach(params[:property][:images])
     if @property.update(property_params)
       redirect_to @property
     else

@@ -18,4 +18,7 @@ module BookingsHelper
       booking.id.to_s + '/edit'
     end
   end
+
+  def display_image(booking)
+  end
 end

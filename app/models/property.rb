@@ -34,6 +34,10 @@ class Property < ApplicationRecord
     self.reviews.average(:rating).round(2)
   end
 
+  def has_reviews?
+    self.reviews.count > 0
+  end
+
   def reviews_count
     self.reviews.count
   end
