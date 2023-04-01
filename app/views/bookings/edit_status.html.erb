@@ -1,45 +1,31 @@
 <div class="flex items-center justify-center p-12">
   <div class="mx-auto w-full max-w-[550px]">
     <%= form_with model: @booking do |f| %>
-    <% if @booking.errors.any? %>
-    <div
-      id="error_explanation"
-      class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3"
-    >
-      <h2><%= pluralize(@booking.errors.count, "error") %>
-        prohibited this review from being saved:</h2>
+      <%= render 'partials/validation_errors', model: @booking %>
+      <div class="-mx-3 flex flex-wrap">
 
-      <ul>
-        <% @booking.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-        <div class="-mx-3 flex flex-wrap">
-
-<div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-     <%= f.radio_button :status, "approved", class: "w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" %>
-    <%= f.label :status, "Approve",  class:"w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
-</div>
-<div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-     <%= f.radio_button :status, "declined", class:"w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" %>
-    <%= f.label :status, "Decline", class:"w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
-</div>
-          <div class="w-full px-3 sm:w-1/2">
-            <div class="mb-5">
-              <%= f.label "Leave a comment",
+        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+          <%= f.radio_button :status, "approved", class: "w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" %>
+          <%= f.label :status, "Approve",  class:"w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
+        </div>
+        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+          <%= f.radio_button :status, "declined", class:"w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" %>
+          <%= f.label :status, "Decline", class:"w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
+        </div>
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <%= f.label "Leave a comment",
                       class: "mb-3 block text-base font-medium text-[#07074D]" %>
-              <%= f.text_area :comment,
+            <%= f.text_area :comment,
                           class:
                             "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
-            </div>
           </div>
         </div>
-        <%= f.submit "Submit",
+      </div>
+      <%= f.submit "Submit",
                  class:
                    "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
-      </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+</div>
 </div>
