@@ -14,7 +14,7 @@ module BookingsHelper
   def link_path(booking)
     if link_text == 'Approve or Decline'
       booking.id.to_s + '/edit_status'
-    elsif button_text == 'Edit'
+    elsif link_text == 'Edit'
       booking.id.to_s + '/edit'
     end
   end

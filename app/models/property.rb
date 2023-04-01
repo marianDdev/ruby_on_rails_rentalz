@@ -31,7 +31,7 @@ class Property < ApplicationRecord
   end
 
   def rating
-    self.reviews.average(:rating)
+    self.reviews.average(:rating).round(2)
   end
 
   def reviews_count
