@@ -1,19 +1,5 @@
 <%= form_with(model: review, class: "contents") do |form| %>
-  <% if review.errors.any? %>
-    <div
-      id="error_explanation"
-      class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3"
-    >
-      <h2><%= pluralize(review.errors.count, "error") %>
-        prohibited this review from being saved:</h2>
-
-      <ul>
-        <% review.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'partials/validation_errors', model: review %>
 
   <%= form.hidden_field :user_id, value: current_user.id, readonly: true %>
   <%= form.hidden_field :property_id, value: @property.id, readonly: true %>

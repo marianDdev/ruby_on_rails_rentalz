@@ -1,14 +1,3 @@
-<% if @property.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@property.errors.count, "error") %>
-      prohibited this property from being saved:</h2>
+<%= render 'partials/validation_errors', model: @property %>
 
-    <ul>
-      <% @property.errors.each do |error| %>
-        <li class="text-red"><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<%= render "partials/property_form" %>
+<%= render "form" %>

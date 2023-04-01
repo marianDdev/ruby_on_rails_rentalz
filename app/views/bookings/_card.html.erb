@@ -1,10 +1,6 @@
 <div class="h-104 rounded overflow-hidden shadow-lg">
   <div class="px-6 py-4">
-    <% if b.property.images.attached? %>
-      <%= image_tag b.property.images.first, class: "h-56 w-full" %>
-    <% else %>
-      <%= image_tag "apartment.jpeg" %>
-    <% end %>
+    <%= image_tag define_image_url(b.property), class: "h-56 w-full" %>
     <div class="font-bold text-xl mb-2">Guest:
       <%= b.guest.first_name %>
       <%= b.guest.last_name %></div>

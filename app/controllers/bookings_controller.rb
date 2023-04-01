@@ -32,6 +32,10 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
   end
 
+  def edit_status
+    @booking = Booking.find(params[:id])
+  end
+
   def update
     @booking = Booking.find(params[:id])
     if @booking.update(booking_params)
@@ -41,22 +45,12 @@ class BookingsController < ApplicationController
     end
   end
 
-  def approve
-    @booking = Booking.find(params[:id])
-    @booking.update(status: 'approved')
-    redirect_to @booking
-  end
-
-  def edit_status
-    @booking = Booking.find(params[:id])
-  end
-
-  def decline
+  def update_status
     @booking = Booking.find(params[:id])
     if @booking.update(booking_params)
       redirect_to @booking
     else
-      render :edit, status: :unprocessable_entity
+      render :edit_status, status: :unprocessable_entity
     end
   end
 
@@ -71,7 +65,7 @@ class BookingsController < ApplicationController
       :end_at,
       :guests_count,
       :status,
-      :decline_reason,
+      :comment,
     )
   end
 

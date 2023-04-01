@@ -1,10 +1,6 @@
 <div class="h-104 rounded overflow-hidden shadow-lg">
   <%= link_to(p) do %>
-    <% if p.images.attached? %>
-      <%= image_tag p.images.first, class: "h-56 w-full" %>
-    <% else %>
-      <%= image_tag "https://img.freepik.com/free-photo/modern-living-room-style_53876-144814.jpg?w=1380&t=st=1679986771~exp=1679987371~hmac=8f503fc971412595ec3a4b7508c2ca8228137bcc8a11ed170d602519fecb6a12" %>
-    <% end %>
+    <%= image_tag define_image_url(p), class: "h-56 w-full" %>
   <% end %>
   <div class="px-6 py-4">
     <%= link_to(p) do %>
@@ -16,7 +12,7 @@
   </div>
 
   <div class="px-6 py-4">
-    <% if p.reviews && p.reviews.count > 0 %>
+    <% if p.has_reviews? %>
       <%= link_to reviews_path(property_id: p.id) do %>
         <svg
           aria-hidden="true"

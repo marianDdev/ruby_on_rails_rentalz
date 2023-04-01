@@ -33,7 +33,7 @@
         <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
           <div class="mt-1.5 sm:mt-0">
             <p class="text-gray-500">Reason:
-              <%= @booking.decline_reason %></p>
+              <%= @booking.comment %></p>
           </div>
         </div>
       </div>
@@ -41,44 +41,16 @@
   </div>
 </div>
 
-<% if current_user.owner? && @booking.status == 'pending' %>
+<% if @booking.status == 'pending' %>
   <div class="block rounded-lg p-4 shadow-sm shadow-indigo-100">
     <div class="mt-2">
       <dl>
         <div>
-          <%= button_to "Approve",
-          approve_path,
-          method: :patch,
+          <%= link_to link_text,
+          link_path(@booking),
           class:
             "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
         </div>
       </dl>
     </div>
-
-    <div class="mt-2">
-      <dl>
-        <div>
-          <%= link_to "Decline",
-          edit_booking_path(@booking),
-          class:
-            "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
-        </div>
-      </dl>
-    </div>
-  </div>
-<% end %>
-
-<% if current_user.guest? && @booking.status == 'pending' %>
-  <div class="block rounded-lg p-4 shadow-sm shadow-indigo-100">
-    <div class="mt-2">
-      <dl>
-        <div>
-          <%= link_to "Edit",
-          edit_booking_path(@booking),
-          class:
-            "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
-        </div>
-      </dl>
-    </div>
-  </div>
-<% end %>
+  <% end %>

@@ -1,19 +1,5 @@
 <%= form_with(model: message, class: "space-y-8") do |form| %>
-  <% if message.errors.any? %>
-    <div
-      id="error_explanation"
-      class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3"
-    >
-      <h2><%= pluralize(message.errors.count, "error") %>
-        prohibited this message from being saved:</h2>
-
-      <ul>
-        <% message.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'partials/validation_errors', model: message %>
 
   <div>
     <%= form.text_field :subject,
