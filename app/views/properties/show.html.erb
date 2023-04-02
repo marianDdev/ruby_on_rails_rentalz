@@ -42,8 +42,7 @@
       <%= image_tag i, class: "h-auto w-full rounded-md object-cove mt-5" %>
     <% end %>
   <% else %>
-    <%= image_tag "full_pic_interior_apartment.avif",
-    class: "h-56 w-full rounded-md object-cover" %>
+    <%= image_tag define_image_url(@property)%>
   <% end %>
 
   <% if current_user && current_user.guest? %>
@@ -60,7 +59,7 @@
 
   <% end %>
 
-  <% if @property.user_id == current_user.id %>
+  <% if current_user && @property.user_id == current_user.id %>
     <div class="block rounded-lg p-4 shadow-sm shadow-indigo-100">
       <div class="mt-2">
         <div class="flex">
