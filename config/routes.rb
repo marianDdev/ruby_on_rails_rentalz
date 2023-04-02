@@ -16,7 +16,6 @@ Rails.application.routes.draw do
 
   get '/about', to: 'pages#about'
   get '/contact', to: 'pages#contact'
-  get '/thanks', to: 'pages#thanks'
   get '/help', to: 'pages#help'
   get '/help/owner', to: 'pages#owner_help', as: 'owner_help'
   get '/help/guest', to: 'pages#guest_help', as: 'guest_help'

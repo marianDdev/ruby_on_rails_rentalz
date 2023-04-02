@@ -28,11 +28,11 @@
         </div>
       </div>
     </div>
-    <% if @booking.has_reason? %>
+    <% if @booking.has_comment? %>
       <div class="mt-6 flex items-center gap-8 text-sm">
         <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
           <div class="mt-1.5 sm:mt-0">
-            <p class="text-gray-500">Reason:
+            <p class="text-gray-500">Comment:
               <%= @booking.comment %></p>
           </div>
         </div>
