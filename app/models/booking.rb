@@ -3,10 +3,6 @@ class Booking < ApplicationRecord
   belongs_to :guest, class_name: 'User'
   belongs_to :property
 
-  PENDING_STATUS = 'pending'
-  APPROVED_STATUS = 'approved'
-  DECLINED_STATUS = 'declined'
-
   validates :status,
             presence: true,
             inclusion: {
@@ -22,14 +18,6 @@ class Booking < ApplicationRecord
 
   def has_comment?
     self.comment != nil
-  end
-
-  def approved?
-    self.status == APPROVED_STATUS
-  end
-
-  def reviewable?
-    self.is_reviewed == false && self.approved?
   end
 
   private

@@ -16,7 +16,7 @@
       <p class="text-gray-700 text-base">Status:
         <%= booking.status %></p>
 
-      <% if current_user.id == booking.guest_id && booking.reviewable? %>
+      <% if reviewable(booking) %>
         <%= link_to "Add review",
       new_review_path(booking_id: booking.id),
       class:
