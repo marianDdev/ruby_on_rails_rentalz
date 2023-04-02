@@ -1,6 +1,6 @@
 <div class="flex items-center justify-center p-12">
   <%= render 'partials/section_title', title: 'Create a booking request' %>
   <div class="mx-auto w-full max-w-[550px]">
-    <%= render 'form', booking: @booking%>
+    <%= render 'form', booking: @booking, owner_id: @owner_id, property_id: @property_id  %>
   </div>
 </div>
