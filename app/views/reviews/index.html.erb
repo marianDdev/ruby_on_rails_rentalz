@@ -1,5 +1,6 @@
 <%= link_to(@property) do %>
   <%= render 'partials/section_title', title: 'Reviews for ' + @property.name + ' from ' + @property.city + ', ' + @property.country %>
+  <%= image_tag define_image_url(@property)%>
 <% end %>
 <div
   class="
