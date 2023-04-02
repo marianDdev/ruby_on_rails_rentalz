@@ -1,5 +1,5 @@
 <%= link_to(@property) do %>
-  <%= render 'partials/section_title', title: 'Reviews' %>
+  <%= render 'partials/section_title', title: 'Reviews for ' + @property.name + ' from ' + @property.city + ', ' + @property.country %>
 <% end %>
 <div
   class="
@@ -13,5 +13,5 @@
     gap-5
   "
 >
-  <% render @reviews%>
+  <%= render @reviews%>
 </div>
