@@ -10,9 +10,7 @@
     gap-5
   "
 >
-  <% @properties.each do |p| %>
-    <%= render "card", p: p %>
-  <% end %>
+  <%= render @properties %>
 </div>
 
 <%= render("partials/pagination") %>

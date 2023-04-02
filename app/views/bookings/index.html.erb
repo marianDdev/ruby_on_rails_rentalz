@@ -11,10 +11,9 @@
     gap-5
   "
 >
+
   <% @current_bookings.each do |b| %>
-    <%= link_to(b) do %>
-      <%= render 'card', b: b %>
-    <% end %>
+    <%= render 'booking', booking: b %>
   <% end %>
 </div>
 
@@ -32,9 +31,7 @@
   "
 >
   <% @future_bookings.each do |b| %>
-    <%= link_to(b) do %>
-      <%= render "card", b: b %>
-    <% end %>
+    <%= render "booking", booking: b %>
   <% end %>
 </div>
 
@@ -52,8 +49,6 @@
   "
 >
   <% @past_bookings.each do |b| %>
-    <%= link_to(b) do %>
-      <%= render "card", b: b %>
-    <% end %>
+    <%= render "booking", booking: b %>
   <% end %>
 </div>
