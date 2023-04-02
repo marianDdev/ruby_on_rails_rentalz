@@ -1,0 +1,42 @@
+ <%= form_with model: booking do |f| %>
+  <%= render 'partials/validation_errors', model: booking %>
+  <%= f.hidden_field :guest_id, value: current_user.id %>
+  <%= f.hidden_field :owner_id, value: @owner_id %>
+  <%= f.hidden_field :property_id, value: @property_id %>
+  <%= f.hidden_field :status, value: "pending" %>
+  <div class="-mx-3 flex flex-wrap">
+    <div class="w-full px-3 sm:w-1/2">
+      <div class="mb-5">
+        <%= f.label "Number of guests",
+                    class: "mb-3 block text-base font-medium text-[#07074D]" %>
+        <%= f.number_field :guests_count,
+                           class:
+                             "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="-mx-3 flex flex-wrap">
+    <div class="w-full px-3 sm:w-1/2">
+      <div class="mb-5">
+        <%= f.label "Check-in", class: "mb-3 block text-base font-medium text-[#07074D]" %>
+        <%= f.date_field :start_at,
+                         class:
+                           "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
+      </div>
+    </div>
+    <div class="w-full px-3 sm:w-1/2">
+      <div class="mb-5">
+        <%= f.label "Checkout", class: "mb-3 block text-base font-medium text-[#07074D]" %>
+        <%= f.date_field :end_at,
+                         class:
+                           "w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" %>
+      </div>
+    </div>
+  </div>
+  <div>
+    <%= f.submit "Request booking",
+                 class:
+                   "p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+  </div>
+<% end %>
