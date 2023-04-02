@@ -1,8 +1,8 @@
  <%= form_with model: booking do |f| %>
   <%= render 'partials/validation_errors', model: booking %>
   <%= f.hidden_field :guest_id, value: current_user.id %>
-  <%= f.hidden_field :owner_id, value: @owner_id %>
-  <%= f.hidden_field :property_id, value: @property_id %>
+  <%= f.hidden_field :owner_id, value: owner_id %>
+  <%= f.hidden_field :property_id, value: property_id %>
   <%= f.hidden_field :status, value: "pending" %>
   <div class="-mx-3 flex flex-wrap">
     <div class="w-full px-3 sm:w-1/2">
