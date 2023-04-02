@@ -30,7 +30,7 @@
       sm:mt-0
     "
   >
-  <%= pages_titles.each do |title| %>
+  <% pages_titles.each do |title| %>
     <%= link_to title, define_path(title),  class: "mr-4 hover:underline md:mr-6" %>
   <% end %>  
   </ul>
