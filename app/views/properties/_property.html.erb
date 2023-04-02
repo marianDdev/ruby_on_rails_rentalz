@@ -1,19 +1,19 @@
 <div class="h-104 rounded overflow-hidden shadow-lg">
-  <%= link_to(p) do %>
-    <%= image_tag define_image_url(p), class: "h-56 w-full" %>
+  <%= link_to(property) do %>
+    <%= image_tag define_image_url(property), class: "h-56 w-full" %>
   <% end %>
   <div class="px-6 py-4">
-    <%= link_to(p) do %>
-      <div class="font-bold text-xl mb-2"><%= p.name %></div>
-      <div class="font-bold text-l mb-2"><%= p.city %>,
-        <%= p.country %></div>
+    <%= link_to(property) do %>
+      <div class="font-bold text-xl mb-2"><%= property.name %></div>
+      <div class="font-bold text-l mb-2"><%= property.city %>,
+        <%= property.country %></div>
     <% end %>
-    <p class="text-gray-700 text-base"><%= p.description %></p>
+    <p class="text-gray-700 text-base"><%= property.description %></p>
   </div>
 
   <div class="px-6 py-4">
-    <% if p.has_reviews? %>
-      <%= link_to reviews_path(property_id: p.id) do %>
+    <% if property.has_reviews? %>
+      <%= link_to reviews_path(property_id: property.id) do %>
         <svg
           aria-hidden="true"
           class="w-5 h-5 text-yellow-400"
@@ -23,8 +23,8 @@
         ><title>Rating star</title><path
             d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
           ></path></svg>
-        <p class="ml-2 mr-2 text-sm font-bold text-gray-900 dark:text-white"><%= p.rating %></p>
-        <span class="text-sm font-medium text-gray-900 dark:text-white"><%= p.reviews_count %>
+        <p class="ml-2 mr-2 text-sm font-bold text-gray-900 dark:text-white"><%= property.rating %></p>
+        <span class="text-sm font-medium text-gray-900 dark:text-white"><%= property.reviews_count %>
           reviews</span>
       <% end %>
     <% else %>

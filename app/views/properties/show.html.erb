@@ -1,14 +1,4 @@
 <div class="block rounded-lg p-4 shadow-sm shadow-indigo-100">
-
-  <% if @property.images.attached? %>
-    <% @property.images.each do |i| %>
-      <%= image_tag i, class: "h-56 w-full rounded-md object-cover" %>
-    <% end %>
-  <% else %>
-    <%= image_tag "full_pic_interior_apartment.avif",
-    class: "h-56 w-full rounded-md object-cover" %>
-  <% end %>
-
   <div class="mt-2">
     <dl>
       <div>
@@ -46,6 +36,15 @@
       </div>
     </div>
   </div>
+
+  <% if @property.images.attached? %>
+    <% @property.images.each do |i| %>
+      <%= image_tag i, class: "h-auto w-full rounded-md object-cove mt-5" %>
+    <% end %>
+  <% else %>
+    <%= image_tag "full_pic_interior_apartment.avif",
+    class: "h-56 w-full rounded-md object-cover" %>
+  <% end %>
 
   <% if current_user && current_user.guest? %>
     <div class="block rounded-lg p-4 shadow-sm shadow-indigo-100">
