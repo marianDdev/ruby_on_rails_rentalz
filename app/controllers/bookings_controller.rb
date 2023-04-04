@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
     q = request.query_parameters
-    @property = Property.find(q[:id])
+    @property = Property.find(q[:property_id])
     @property_id = @property[:id]
     @owner_id = @property.user[:id]
   end

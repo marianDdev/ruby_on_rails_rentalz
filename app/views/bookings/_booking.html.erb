@@ -2,11 +2,11 @@
   <div class="h-104 rounded overflow-hidden shadow-lg">
     <div class="px-6 py-4">
       <%= image_tag define_image_url(booking.property), class: "h-56 w-full" %>
-      <div class="font-bold text-xl mb-2">Guest:
-        <%= booking.guest.first_name %>
-        <%= booking.guest.last_name %></div>
-      <p class="text-gray-700 text-base">Host:
-        <%= booking.owner.first_name %></p>
+      <div class="font-bold text-xl mb-2">Property:
+        <%= booking.property.name %> from <%= booking.property.city %>, <%= booking.property.country %>
+      </div>
+      <p class="text-gray-700 text-base">Guest:
+        <%= current_user.full_name %></p>
       <p class="text-gray-700 text-base">Check-in:
         <%= booking.start_at %></p>
       <p class="text-gray-700 text-base">Checkout:
