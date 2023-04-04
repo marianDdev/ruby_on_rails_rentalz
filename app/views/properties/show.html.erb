@@ -47,7 +47,7 @@
 
   <% if current_user %>
     <% if current_user.guest? %>
-      <%= render 'button', link_text: 'Reserve', path: new_booking_path(id: @property.id) %>
+      <%= render 'button', link_text: 'Reserve', path: new_booking_path(property_id: @property.id) %>
     <% end %>
 
     <% if @property.user_id == current_user.id %>

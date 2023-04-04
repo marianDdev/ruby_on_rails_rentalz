@@ -31,4 +31,8 @@ class User < ApplicationRecord
   def guest?
     self.role == 'guest'
   end
+
+  def full_name
+    self.first_name + ' ' + self.last_name
+  end
 end
