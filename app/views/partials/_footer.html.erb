@@ -31,7 +31,11 @@
     "
   >
   <% pages_titles.each do |title| %>
-    <%= link_to title, define_path(title),  class: "mr-4 hover:underline md:mr-6" %>
+     <% if title == 'Home' %>
+      <%= link_to 'Home', root_path, class: "mr-4 hover:underline md:mr-6" %>
+     <% else %>
+      <%= link_to title, polymorphic_path(title.downcase),  class: "mr-4 hover:underline md:mr-6" %>
+    <% end %>  
   <% end %>  
   </ul>
 </footer>

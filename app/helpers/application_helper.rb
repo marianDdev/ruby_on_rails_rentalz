@@ -11,12 +11,4 @@ module ApplicationHelper
   def pages_titles
     %w[Home About Contact Help]
   end
-
-  def define_path(entity)
-    if entity == 'Home'
-      '/'
-    else
-      entity.downcase
-    end
-  end
 end
